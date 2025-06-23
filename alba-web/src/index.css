@@ -1,0 +1,18 @@
+:root {
+  --title-font: "Marcellus";
+  --body-font: "Montserrat", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  --primary-green: #c6e6b2;
+  --primary-orange: #fed6c2;
+  --primary-blue: #daf5fb;
+  --text-color: #533c3c;
+  background-color: #fffffd;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
