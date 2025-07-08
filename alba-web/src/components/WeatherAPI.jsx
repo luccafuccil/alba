@@ -55,9 +55,7 @@ function WeatherAPI() {
   }, [coords]);
 
   if (!weather)
-    return (
-      <div className="weather-load">Carregando condições meteorológicas...</div>
-    );
+    return <div className="weather-load">Loading weather conditions...</div>;
 
   return (
     <div className="weather-widget">

@@ -78,3 +78,7 @@ header {
   stroke-width: 1.5px;
   margin-left: 12px;
 }
+
+li {
+  list-style: none;
+}

@@ -71,6 +71,9 @@
 }
 
 @media (max-width: 900px) {
+  .home-page {
+    background-size: cover;
+  }
   .central-card {
     margin-top: 88px;
   }

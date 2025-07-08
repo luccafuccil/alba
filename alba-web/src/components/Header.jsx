@@ -10,6 +10,7 @@ import {
   IconUser,
 } from "@tabler/icons-react";
 import MenuItem from "./MenuItem";
+import useIsDesktop from "../utils/useIsDesktop";
 
 const ProfileCard = ({ isMobile, closeFloat }) => {
   const navigate = useNavigate();
@@ -54,9 +55,11 @@ const ProfileCard = ({ isMobile, closeFloat }) => {
         </div>
         <div className="profile-actions">
           <ul className="menu-list-items">
-            <MenuItem icon={IconUser} to={`/profile/${profile.id}`}>
-              My Profile
-            </MenuItem>
+            {isMobile && (
+              <MenuItem icon={IconUser} to={`/profile/${profile.id}`}>
+                My Profile
+              </MenuItem>
+            )}
             <MenuItem icon={IconMug} to="/closet">
               My Tea Collection
             </MenuItem>
@@ -79,18 +82,12 @@ const ProfileCard = ({ isMobile, closeFloat }) => {
 const ProfileHover = () => {
   const [hovered, setHovered] = useState(false);
   const [profile, setProfile] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+  const isMobile = !useIsDesktop();
 
   useEffect(() => {
     fetch("/profile.json")
       .then((res) => res.json())
       .then((data) => setProfile(data));
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 900);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   if (!profile) return null;

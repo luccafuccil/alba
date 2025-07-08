@@ -2,8 +2,11 @@ import "../styles/profile.css";
 import useLocalTeas from "../utils/useLocalTeas";
 import { useEffect, useState } from "react";
 import IndividualTeaCard from "./IndividualTeaCard";
+import MobileIndividualTeaCard from "./MobileIndividualTeaCard";
 import { useNavigate } from "react-router-dom";
+import useIsDesktop from "../utils/useIsDesktop";
 import WeatherAPI from "./WeatherAPI";
+import TeaCards from "./TeaCards";
 
 const teaTypeImages = {
   black: "/black_tea.png",
@@ -39,15 +42,8 @@ const ProfileGreeting = ({ profile }) => {
   );
 };
 
-const ProfileTeaList = ({ onEdit, onDelete }) => {
-  const navigate = useNavigate();
-  const [teas] = useLocalTeas([]);
-  const [selectedTea, setSelectedTea] = useState(null);
-
-  const handleDelete = (tea) => {
-    setSelectedTea(null);
-    onDelete(tea);
-  };
+const ProfileTeaList = () => {
+  const [teas, setTeas] = useLocalTeas([]);
 
   return (
     <>
@@ -59,53 +55,17 @@ const ProfileTeaList = ({ onEdit, onDelete }) => {
               No teas yet! Add some to your closet to see them here!
             </p>
           ) : (
-            <>
-              {teas
-                .slice(-5)
-                .reverse()
-                .map((tea, idx) => (
-                  <button
-                    className="profile-tea-card"
-                    key={idx}
-                    onClick={() => setSelectedTea(tea)}
-                  >
-                    <div className="profile-tea-card__info">
-                      <h3 className="profile-tea-card__name">{tea.name}</h3>
-                      <span
-                        className={`profile-tea-card__type profile-tea-card__type--${tea.type}`}
-                      >
-                        {tea.type}
-                      </span>
-                    </div>
-                    <p className="profile-tea-card__tasting">
-                      {tea.tastingNotes}
-                    </p>
-                    <img
-                      className="profile-tea-card__image"
-                      src={teaTypeImages[tea.type] || "/images/black_tea.png"}
-                      alt={`${tea.type} Tea`}
-                    />
-                  </button>
-                ))}
-              <button
-                className="profile-tea-card__more-button"
-                onClick={() => navigate("/closet")}
-              >
-                View All Teas &gt;
-              </button>
-            </>
+            <TeaCards
+              teas={teas}
+              setTeas={setTeas}
+              showAddButton={false}
+              limit={5}
+              compact={true}
+              disableTilt={true}
+            />
           )}
         </div>
       </div>
-      {selectedTea && (
-        <IndividualTeaCard
-          tea={selectedTea}
-          modalOpen={!!selectedTea}
-          setModalOpen={(open) => !open && setSelectedTea(null)}
-          onEdit={onEdit}
-          onDelete={handleDelete}
-        />
-      )}
     </>
   );
 };

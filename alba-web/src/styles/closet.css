@@ -35,6 +35,25 @@
   cursor: pointer;
 }
 
+.tea-card--compact {
+  position: relative;
+  width: 16vw;
+  height: 88px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: flex-start;
+  border-radius: 10px;
+}
+
+.tea-card--compact:hover {
+  cursor: pointer;
+  box-shadow: 0px 6px 14px -6px rgba(24, 39, 75, 0.2),
+    0px 10px 32px -4px rgba(24, 39, 75, 0.15);
+}
+
 .tea-card--big {
   max-width: 50vw;
   height: 400px;
@@ -53,7 +72,6 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  margin: 50px 60px 0 60px;
 }
 
 .tea-card__name {
@@ -192,6 +210,48 @@
   margin-right: 24px;
 }
 
+.tea-card--compact .tea-card__image {
+  width: 50px;
+  height: auto;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.tea-card--compact .tea-card__name {
+  font-size: 12px;
+  top: 8px;
+  left: 16px;
+  width: 80%;
+  line-height: 16px;
+}
+
+.tea-card--compact .tea-card__type {
+  font-size: 10px;
+  top: 24px;
+  left: 16px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  width: fit-content;
+  padding: 2px 8px;
+}
+.tea-card--compact .tea-card__description {
+  display: none;
+}
+.tea-card--compact .tea-card__tasting {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  font-size: 8px;
+  font-family: var(--body-font);
+  color: var(--text-color);
+  margin-top: 4px;
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .tea-card--small .tea-card__image {
   max-width: 150px;
 }
@@ -311,6 +371,7 @@
   flex-direction: column;
   margin-top: 124px;
   margin-bottom: 60px;
+  margin-left: 60px;
 }
 
 .tea-list-title {
@@ -319,7 +380,7 @@
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
-  margin-left: 64px;
+  margin-bottom: 50px;
 }
 
 .new-tea-div {
@@ -547,6 +608,10 @@
 }
 
 @media (max-width: 900px) {
+  .closet-page {
+    background-size: cover;
+  }
+
   .tea-card {
     flex-direction: column;
   }
@@ -566,7 +631,6 @@
   }
   .tea-cards-container {
     flex-direction: column;
-    margin: 50px 20px 0 20px;
   }
   .tea-card--small .tea-card__name {
     width: 85%;
@@ -585,9 +649,9 @@
   }
   .tea-card--big .tea-card__description {
     text-align: left;
-    width: 90%;
-    margin: 24px;
+    width: 80%;
     top: 50%;
+    font-size: 20px;
   }
   .tea-card--big .tea-card__tasting {
     left: 24px;
@@ -617,8 +681,12 @@
   .delete-confirmation-actions {
     bottom: 16px;
   }
+  .tea-list-card {
+    margin: 0;
+  }
   .tea-list-title {
     margin-right: 30px;
+    margin-left: 30px;
   }
   .tilt-container {
     transform: none !important;
@@ -643,5 +711,111 @@
   .new-tea-modal--prompt:open {
     width: 90vw;
     height: 18vh;
+  }
+
+  .mobile-tea-form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fffffd75;
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile-individual-tea-card {
+    width: 90vw;
+    max-height: 50vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fffffd;
+    z-index: 1001;
+    padding: 24px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+
+  .mobile-tea-card__image {
+    position: absolute;
+    width: 120px;
+    left: 30px;
+    top: 4px;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .delete-confirmation-card {
+    background-color: #fff;
+    box-shadow: 0px 6px 14px -6px rgba(24, 39, 75, 0.12),
+      0px 10px 32px -4px rgba(24, 39, 75, 0.1);
+    border-radius: 24px;
+  }
+
+  .tea-card--big .tea-card__right {
+    position: relative;
+  }
+
+  .tea-card--compact {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: flex-start;
+    border-radius: 10px;
+  }
+
+  .tea-card--compact .tea-card__image {
+    width: 50px;
+    height: auto;
+    object-fit: cover;
+    margin-right: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .tea-card--compact .tea-card__name {
+    font-size: 12px;
+    top: 8px;
+    left: 16px;
+    width: 80%;
+    line-height: 16px;
+  }
+
+  .tea-card--compact .tea-card__type {
+    font-size: 10px;
+    top: 24px;
+    left: 16px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    width: fit-content;
+    padding: 2px 8px;
+  }
+  .tea-card--compact .tea-card__description {
+    display: none;
+  }
+  .tea-card--compact .tea-card__tasting {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    font-size: 8px;
+    font-family: var(--body-font);
+    color: var(--text-color);
+    margin-top: 4px;
+    text-align: left;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
