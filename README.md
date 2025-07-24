@@ -47,7 +47,7 @@
 git clone https://github.com/luccafuccil/alba.git
 
 # Navigate to project directory
-cd alba-web
+cd alba
 
 # Install dependencies
 npm install
