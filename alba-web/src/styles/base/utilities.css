@@ -1,0 +1,19 @@
+/* ==============================================
+   UTILITY STYLES
+   ============================================== */
+
+.tilt-container {
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 900px) {
+  .tilt-container {
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+}

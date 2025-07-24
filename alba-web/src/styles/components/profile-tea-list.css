@@ -1,0 +1,35 @@
+/* ==============================================
+   PROFILE TEA LIST COMPONENT STYLES
+   ============================================== */
+
+.profile-teas__title,
+.profile-teas__empty {
+  font-family: var(--title-font);
+  color: var(--text-color);
+}
+
+.profile-teas__title {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.profile-teas__empty {
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 900px) {
+  .profile-teas__title {
+    font-size: 18px;
+  }
+
+  .profile-teas__empty {
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+}

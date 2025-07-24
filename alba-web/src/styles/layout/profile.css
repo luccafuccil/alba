@@ -1,0 +1,54 @@
+/* ==============================================
+   PROFILE LAYOUT STYLES
+   ============================================== */
+
+.profile-header__card {
+  position: relative;
+  width: 100%;
+}
+
+.profile-teas__card {
+  position: absolute;
+  bottom: 40px;
+}
+
+.profile-teas__container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.profile-teas__list {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-left: 32px;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 900px) {
+  .profile-teas__container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  .profile-teas__card {
+    position: relative;
+    margin-top: 80px;
+  }
+
+  .profile-teas__list {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    gap: 8px;
+    margin-left: 0;
+    margin-top: 30px;
+  }
+}

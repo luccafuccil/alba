@@ -1,27 +1,7 @@
-:root {
-  --title-font: "Marcellus";
-  --body-font: "Montserrat", sans-serif;
-  line-height: auto;
-  font-weight: 400;
+/* ==============================================
+   GLOBAL STYLES ENTRY POINT
+   ============================================== */
 
-  color-scheme: light dark;
-  --primary-green: #c6e6b2;
-  --primary-orange: #fed6c2;
-  --primary-blue: #daf5fb;
-  --text-color: #533c3c;
-  --darker-green: #b0d99c;
-  background-color: #fffffd;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
-}
+/* Import base styles */
+@import "./styles/base/variables.css";
+@import "./styles/base/reset.css";

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import "../styles/closet.css";
+import "../styles/components/modals.css";
 
 function Modal({ openModal, closeModal, children, className = "" }) {
   const ref = useRef();

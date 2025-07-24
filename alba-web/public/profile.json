@@ -1,6 +1,7 @@
 {
-  "name": "Marina",
+  "name": "Lucca",
   "photo": "/profile-photo.jpg",
   "greeting": "We hope you're enjoying your time here!",
-  "id": "marina"
+  "id": "lucca",
+  "level": "beginner"
 }

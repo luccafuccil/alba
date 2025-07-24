@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import "../styles/closet.css";
-import { limitWords, limitCharacters } from "../utils/wordLimit";
+import { useState, useEffect } from "react";
+import "../styles/components/forms.css";
+
+import { limitWords } from "../utils/wordLimit";
+import { TEA_TYPES } from "../constants/teaTypes";
 
 const MAX_NAME_WORDS = 5;
 const MAX_DESC_WORDS = 30;
@@ -10,6 +12,8 @@ const defaultForm = {
   description: "",
   tastingNotes: "",
   type: "black",
+  brewingTime: "",
+  infusionIngredients: "",
 };
 
 const NewTeaForm = ({ onSubmit, closeModal, initialData }) => {
@@ -31,24 +35,23 @@ const NewTeaForm = ({ onSubmit, closeModal, initialData }) => {
     if (name === "name") {
       const words = value.trim().split(/\s+/);
       if (words.length > MAX_NAME_WORDS) {
-        setError(`Name cannot exceed ${MAX_NAME_WORDS} words.`);
         return;
       }
-      setError("");
+      newValue = limitWords(value, MAX_NAME_WORDS);
     }
     if (name === "description") {
       const words = value.trim().split(/\s+/);
       if (words.length > MAX_DESC_WORDS) {
-        setError(`Description cannot exceed ${MAX_DESC_WORDS} words.`);
         return;
       }
-      setError("");
+      newValue = limitWords(value, MAX_DESC_WORDS);
     }
 
     setForm((prev) => ({
       ...prev,
       [name]: newValue,
     }));
+    setError("");
   };
 
   const handleSubmit = (e) => {
@@ -61,10 +64,14 @@ const NewTeaForm = ({ onSubmit, closeModal, initialData }) => {
     setForm(defaultForm);
   };
 
+  const isEditing = !!initialData;
+  const formTitle = isEditing ? "Edit Tea" : "Add New Tea";
+  const submitText = isEditing ? "Save Changes" : "Add Tea";
+
   return (
     <form className="new-tea-form" onSubmit={handleSubmit}>
       <div className="new-tea-form__heading">
-        <h2 className="new-tea-form__title">Add New Tea</h2>
+        <h2 className="new-tea-form__title">{formTitle}</h2>
       </div>
       <div className="new-tea-form__field">
         <label className="new-tea-form__label" htmlFor="name">
@@ -80,26 +87,64 @@ const NewTeaForm = ({ onSubmit, closeModal, initialData }) => {
           required
         />
       </div>
-      <div className="new-tea-form__field">
-        <label className="new-tea-form__label" htmlFor="type">
-          Type *
-        </label>
-        <select
-          className="new-tea-form__select"
-          id="type"
-          name="type"
-          value={form.type}
-          onChange={handleChange}
-          required
-        >
-          <option value="black">Black</option>
-          <option value="green">Green</option>
-          <option value="white">White</option>
-        </select>
+      <div className="new-tea-form-type__container">
+        <div className="new-tea-form__field">
+          <label className="new-tea-form__label" htmlFor="type">
+            Type *
+          </label>
+          <select
+            className="new-tea-form__select"
+            id="type"
+            name="type"
+            value={form.type}
+            onChange={handleChange}
+            required
+          >
+            {TEA_TYPES.map((teaType) => (
+              <option key={teaType.value} value={teaType.value}>
+                {teaType.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="new-tea-form__field">
+          <label className="new-tea-form__label" htmlFor="brewTime">
+            Brewing Time (minutes)
+          </label>
+          <input
+            className="new-tea-form__input"
+            id="brewTime"
+            name="brewTime"
+            type="number"
+            min="0"
+            max="30"
+            value={form.brewTime}
+            onChange={handleChange}
+          />
+        </div>
+        {form.type === "infusion" && (
+          <div className="new-tea-form__field">
+            <label
+              className="new-tea-form__label"
+              htmlFor="infusionIngredients"
+            >
+              Infusion Ingredients
+            </label>
+            <input
+              className="new-tea-form__input"
+              id="infusionIngredients"
+              name="infusionIngredients"
+              type="text"
+              value={form.infusionIngredients}
+              onChange={handleChange}
+              placeholder="e.g. chamomile, mint, etc."
+            />
+          </div>
+        )}
       </div>
       <div className="new-tea-form__field">
         <label className="new-tea-form__label" htmlFor="description">
-          Description
+          Description or Notes
         </label>
         <textarea
           className="new-tea-form__textarea"
@@ -131,7 +176,7 @@ const NewTeaForm = ({ onSubmit, closeModal, initialData }) => {
           Cancel
         </button>
         <button className="new-tea-form__submit" type="submit">
-          Add Tea
+          {submitText}
         </button>
       </div>
     </form>

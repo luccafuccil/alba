@@ -1,0 +1,641 @@
+/* ==============================================
+   TEA CARD COMPONENT STYLES
+   ============================================== */
+
+.tea-card,
+.new-tea-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  border: none;
+  box-shadow: 0px 6px 14px -6px rgba(24, 39, 75, 0.22),
+    0px 10px 32px -4px rgba(24, 39, 75, 0.2);
+}
+
+.tea-card {
+  flex-direction: row;
+  justify-content: flex-start;
+  background: #fffffd;
+}
+
+/* Tea Card Sizes */
+.tea-card--small {
+  width: calc((100vw / 3) - 50px);
+  min-width: none;
+  height: 280px;
+  cursor: pointer;
+}
+
+.tea-card--compact {
+  position: relative;
+  width: 16vw;
+  height: 88px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: flex-start;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.tea-card--compact:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+  box-shadow: 0px 6px 14px -6px rgba(10, 17, 32, 0.2),
+    0px 10px 32px -4px rgba(14, 24, 46, 0.15);
+}
+
+.tea-card--big {
+  width: 70vw;
+  max-width: 900px;
+  height: auto;
+  min-height: 60vh;
+  max-height: 80vh;
+  flex-grow: 1;
+  overflow-y: visible;
+  z-index: 100000;
+}
+
+/* Tea Card Elements */
+.tea-card__name {
+  color: var(--text-color);
+  font-family: var(--title-font);
+  line-break: auto;
+  text-align: left;
+}
+
+.tea-card--small .tea-card__name {
+  width: 60%;
+  font-size: 24px;
+  line-height: 24px;
+  position: absolute;
+  top: 36px;
+  left: 24px;
+}
+
+.tea-card--big .tea-card__name {
+  width: 40%;
+  font-size: 32px;
+  line-height: 32px;
+  position: absolute;
+  top: 64px;
+  left: 32px;
+}
+
+.tea-card--compact .tea-card__name {
+  position: absolute;
+  font-size: 12px;
+  top: 24px;
+  left: 8px;
+  width: 60%;
+  line-height: 16px;
+}
+
+.tea-card__brewing-time {
+  font-family: var(--body-font);
+  font-weight: 600;
+  color: var(--text-color);
+  font-family: var(--title-font);
+  text-align: left;
+  padding: 4px 8px;
+  border-radius: 10px;
+  background-color: rgb(235, 234, 234);
+}
+
+.tea-card--compact .tea-card__brewing-time {
+  display: none;
+}
+
+.tea-card__heart {
+  position: absolute;
+  object-fit: cover;
+  color: var(--text-color);
+  stroke-width: 1px;
+  cursor: pointer;
+}
+
+.tea-card--small .tea-card__heart {
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.tea-card--big .tea-card__heart {
+  width: 32px;
+  height: 32px;
+  bottom: 36px;
+  right: 250px;
+  transition: transform 0.9s ease-out;
+}
+
+.tea-card__heart:hover {
+  fill: var(--text-color);
+  transform: scale(1.1);
+  transition: transform 0.2s ease-out;
+}
+
+.tea-card__heart:active {
+  transform: scale(1.4);
+}
+
+.tea-card__heart--active {
+  fill: var(--text-color);
+}
+
+.tea-card--compact .tea-card__heart {
+  display: none;
+}
+
+.tea-card__type {
+  position: absolute;
+  font-family: var(--body-font);
+  font-weight: 600;
+  border-radius: 12px;
+  text-transform: uppercase;
+  width: fit-content;
+  text-align: left;
+}
+
+.tea-card--small .tea-card__type {
+  font-size: 8px;
+  top: 16px;
+  left: 24px;
+  padding: 4px;
+}
+
+.tea-card--big .tea-card__type {
+  font-size: 16px;
+  top: 24px;
+  left: 32px;
+  padding: 8px;
+}
+
+.tea-card--compact .tea-card__type {
+  font-size: 8px;
+  top: 8px;
+  left: 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  width: fit-content;
+  padding: 2px 8px;
+}
+
+.tea-card__type--black {
+  color: #fffffd;
+  background-color: var(--text-color);
+}
+.tea-card__type--green {
+  color: var(--text-color);
+  background-color: var(--primary-green);
+}
+.tea-card__type--white {
+  color: var(--text-color);
+  background-color: rgb(235, 234, 234);
+}
+.tea-card__type--oolong {
+  color: var(--text-color);
+  background-color: #eac783;
+}
+.tea-card__type--puerh {
+  color: var(--text-color);
+  background-color: #ee9393;
+}
+
+.tea-card__left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 75%;
+  margin-left: 24px;
+  height: 100%;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+.tea-card--big .tea-card__left {
+  margin-top: auto;
+  margin-bottom: auto;
+  height: auto;
+  width: 70%;
+  font-size: 24px;
+  margin-left: 32px;
+}
+
+.tea-card--small .tea-card__left {
+  width: 70%;
+  margin-top: 50px;
+  margin-bottom: auto;
+  height: auto;
+}
+
+.tea-card__description {
+  color: var(--text-color);
+  font-family: var(--body-font);
+  margin-top: auto;
+  margin-bottom: 18px;
+  margin-right: 24px;
+  transform: translateY(16px);
+  text-align: left;
+  word-break: break-word;
+}
+
+.tea-card--small .tea-card__description {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 100%;
+  max-width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  line-clamp: 6;
+  box-orient: vertical;
+  white-space: normal;
+}
+
+.tea-card--big .tea-card__description {
+  font-size: 24px;
+}
+
+.tea-card--compact .tea-card__description {
+  display: none;
+}
+
+.tea-card__tasting {
+  position: absolute;
+  color: var(--text-color);
+  font-family: var(--body-font);
+  margin-top: 8px;
+  text-align: left;
+}
+
+.tea-card--small .tea-card__tasting {
+  font-size: 12px;
+  font-weight: 300;
+  max-width: 90%;
+  left: 24px;
+  bottom: 24px;
+}
+
+.tea-card--big .tea-card__tasting {
+  font-size: 16px;
+  font-weight: 400;
+  left: 32px;
+  bottom: 32px;
+  width: 60%;
+}
+
+.tea-card--compact .tea-card__tasting {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  font-size: 8px;
+  font-family: var(--body-font);
+  color: var(--text-color);
+  margin-top: 4px;
+  text-align: left;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tea-card__image {
+  height: auto;
+  object-fit: cover;
+  margin-right: 24px;
+  mix-blend-mode: multiply;
+}
+
+.tea-card--compact .tea-card__image {
+  width: 50px;
+  height: auto;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.tea-card--small .tea-card__image {
+  max-width: 150px;
+  margin-left: -35px;
+  margin-right: 15px;
+}
+
+.tea-card--big .tea-card__image {
+  max-width: 250px;
+}
+
+.tea-card--big .tea-card__right {
+  margin-left: 32px;
+}
+
+/* Tea Card Actions */
+.tea-card--big .tea-card__actions {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.tea-card--big .tea-card__actions button {
+  height: 45px;
+  border-radius: 24px;
+  cursor: pointer;
+  padding: 0 16px;
+  font-family: var(--body-font);
+}
+
+.tea-card--big .tea-card__edit {
+  background-color: var(--primary-green);
+  border: none;
+  width: 120px;
+  color: var(--text-color);
+  font-family: var(--body-font);
+}
+
+.tea-card--big .tea-card__edit:hover {
+  background-color: var(--darker-green);
+}
+
+.tea-card--big .tea-card__delete {
+  border: 1px solid rgb(248, 102, 102);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  width: 80px;
+  font-family: var(--body-font);
+}
+
+.tea-card--big .tea-card__delete:hover {
+  background-color: rgb(248, 102, 102);
+}
+
+.tea-card__name,
+.tea-card__description,
+.tea-card__tasting,
+.tea-card__type {
+  text-align: left;
+}
+
+.tea-card__type,
+.tea-card__name,
+.tea-card__tasting {
+  pointer-events: auto;
+}
+
+/* New Tea Card */
+.new-tea-card {
+  width: calc((100vw / 3) - 50px);
+  max-width: calc((100vw / 3) - 50px);
+  height: 280px;
+  cursor: pointer;
+  background: linear-gradient(120deg, #daf5fb 51.81%, #c6e6b2 101.64%);
+  justify-content: center;
+  align-items: center;
+}
+
+.new-tea-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: auto;
+  height: auto;
+}
+
+.new-tea-plus {
+  color: #533c3c;
+  text-align: center;
+  font-family: Marcellus;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.new-tea-label {
+  color: #533c3c;
+  text-align: center;
+  font-family: Marcellus;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 900px) {
+  .mobile-tea-card--big {
+    width: 100vw;
+    height: fit-content;
+    max-height: 90vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-color);
+    z-index: 1001;
+    padding: 8px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+
+  .tea-card__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: #fff;
+    color: var(--text-color);
+    text-align: center;
+    font-family: var(--title-font);
+    font-size: 16px;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+  }
+
+  .tea-card {
+    flex-direction: column;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  .new-tea-card {
+    min-width: 90vw;
+    height: 150px;
+  }
+
+  .tea-card--small {
+    min-width: 90vw;
+    min-height: 80px;
+    max-height: 350px;
+    flex-direction: row;
+  }
+
+  .tea-card--small:active {
+    transform: scale(0.97);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .tea-card--small:has(.tea-card__heart:active) {
+    transform: none !important;
+  }
+
+  .tea-card--small .tea-card__image {
+    max-width: 120px;
+    margin-left: -20px;
+    margin-right: 16px;
+    margin-bottom: 60px;
+  }
+
+  .tea-card--small .tea-card__brewing-time {
+    margin-bottom: 8px;
+  }
+
+  .tea-card--small .tea-card__name {
+    width: 85%;
+  }
+
+  .tea-card--big .tea-card__name {
+    width: 85%;
+    left: 24px;
+  }
+
+  .tea-card--big .tea-card__type {
+    left: 24px;
+  }
+
+  .tea-card--big .tea-card__left {
+    width: 100%;
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .tea-card--big .tea-card__description {
+    text-align: left;
+    width: 80%;
+    top: 50%;
+    font-size: 20px;
+  }
+
+  .tea-card--big .tea-card__tasting {
+    left: 24px;
+    bottom: 80px;
+  }
+
+  .tea-card__image {
+    width: 120px;
+    height: auto;
+    margin-right: 16px;
+    margin-top: 60px;
+  }
+
+  .tea-card--big .tea-card__image {
+    display: none;
+  }
+
+  .tea-card--big .tea-card__actions {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .tea-card--big .tea-card__right {
+    position: relative;
+  }
+
+  .tea-card--compact {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: flex-start;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .tea-card--compact:active {
+    transform: scale(0.96);
+    box-shadow: 0px 6px 14px -6px rgba(10, 17, 32, 0.2),
+      0px 10px 32px -4px rgba(14, 24, 46, 0.15);
+  }
+
+  .tea-card--compact .tea-card__image {
+    width: 50px;
+    height: auto;
+    object-fit: cover;
+    margin-right: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .tea-card--compact .tea-card__name {
+    font-size: 12px;
+    top: 8px;
+    left: 16px;
+    width: 80%;
+    line-height: 16px;
+  }
+
+  .tea-card--compact .tea-card__type {
+    font-size: 10px;
+    top: 24px;
+    left: 16px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    width: fit-content;
+    padding: 2px 8px;
+  }
+
+  .tea-card--compact .tea-card__tasting {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    font-size: 8px;
+    font-family: var(--body-font);
+    color: var(--text-color);
+    margin-top: 4px;
+    text-align: left;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .tea-card__heart {
+    fill: transparent !important;
+    transition: fill 0.2s ease-out, transform 0.2s ease-out;
+    z-index: 10;
+  }
+
+  .tea-card__heart--active {
+    fill: var(--text-color) !important;
+  }
+
+  .tea-card__heart:hover {
+    fill: var(--text-color);
+  }
+
+  .tea-card__heart:active ~ * {
+    pointer-events: none;
+  }
+}

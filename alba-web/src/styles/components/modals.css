@@ -1,0 +1,107 @@
+/* ==============================================
+   MODAL COMPONENT STYLES
+   ============================================== */
+
+.new-tea-modal:open {
+  opacity: 1;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  width: 35vw;
+  height: fit-content;
+  transition: opacity 0.1s ease;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0px 6px 14px -6px rgba(24, 39, 75, 0.12),
+    0px 10px 32px -4px rgba(24, 39, 75, 0.1);
+}
+
+.new-tea-modal {
+  opacity: 0;
+  display: block;
+}
+
+.new-tea-modal--small:open {
+  width: 60vw;
+  height: fit-content;
+  max-height: 100vh;
+}
+
+.new-tea-modal--big:open {
+  width: 70vw;
+  max-width: 900px;
+  height: 60vh;
+  max-height: 80vh;
+  flex-grow: 1;
+  overflow-y: visible;
+  z-index: 100000;
+}
+
+.new-tea-modal--prompt:open {
+  width: 28vw;
+  height: 18vh;
+  z-index: 100001;
+}
+
+.new-tea-modal::backdrop {
+  background: rgba(9, 8, 34, 0.4);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.6s ease-out, display 0.6s ease-out allow-discrete;
+}
+
+.close-modal-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: #fff;
+  color: var(--text-color);
+  text-align: center;
+  font-family: var(--title-font);
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  z-index: 100001;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-modal-button:hover {
+  color: rgb(139, 138, 138);
+}
+
+.mobile-tea-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: color-mix(
+    in srgb,
+    var(--background-color) 75%,
+    transparent
+  );
+  backdrop-filter: blur(6px);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 900px) {
+  .new-tea-modal--small:open {
+    width: 100vw;
+    height: fit-content;
+  }
+
+  .new-tea-modal--prompt:open {
+    width: 90vw;
+    height: 18vh;
+  }
+}

@@ -1,0 +1,23 @@
+/* ==============================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   ============================================== */
+
+:root {
+  /* Typography */
+  --title-font: "Marcellus";
+  --body-font: "Montserrat", sans-serif;
+
+  /* Colors */
+  --primary-green: #c6e6b2;
+  --primary-orange: #fed6c2;
+  --primary-blue: #daf5fb;
+  --text-color: #533c3c;
+  --darker-green: #b0d99c;
+  --background-color: #fffffd;
+
+  /* Text Rendering Optimization */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

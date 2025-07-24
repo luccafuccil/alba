@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../styles/components/weather-widget.css";
 
 function WeatherAPI() {
   const [coords, setCoords] = useState(() => {
@@ -66,7 +67,9 @@ function WeatherAPI() {
             {weather.weathercode === 0 ? "clear" : "cloudy"} right now, at{" "}
             {weather.temperature}°C.
             <br />
-            How about a cup of tea?
+            {weather.weathercode === 0 && weather.temperature > 20
+              ? "How about some iced tea to cool down?"
+              : "How about a cup of tea?"}
           </>
         )}
       </div>

@@ -1,0 +1,23 @@
+/* ==============================================
+   HOME PAGE STYLES
+   ============================================== */
+
+.home-page {
+  background: linear-gradient(
+    to bottom,
+    var(--primary-orange) 0%,
+    #fffffd 50%,
+    #fffffd 100%
+  );
+  background-repeat: no-repeat;
+  background-size: auto 100vh;
+  min-height: 100vh;
+  padding-top: 120px; /* Espaço para o header fixo */
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 900px) {
+  .home-page {
+    background-size: cover;
+  }
+}

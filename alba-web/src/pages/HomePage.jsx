@@ -1,11 +1,10 @@
 import CentralCard from "../components/CentralCard";
-import Header from "../components/header";
-import "../styles/home.css";
+import "../styles/pages/home.css";
+import "../styles/components/central-card.css";
 
 const HomePage = () => {
   return (
     <div className="home-page">
-      <Header />
       <CentralCard />
     </div>
   );

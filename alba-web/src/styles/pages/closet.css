@@ -1,0 +1,23 @@
+/* ==============================================
+   CLOSET PAGE STYLES
+   ============================================== */
+
+.closet-page {
+  background: linear-gradient(
+    to bottom,
+    var(--primary-blue) 0%,
+    #fffffd 60%,
+    #fffffd 100%
+  );
+  background-repeat: no-repeat;
+  background-size: auto 100vh;
+  min-height: 100vh;
+  padding-top: 120px;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 900px) {
+  .closet-page {
+    background-size: cover;
+  }
+}

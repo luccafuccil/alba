@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "../styles/layout.css";
-import "../styles/profile.css";
+import "../styles/layout/header.css";
+import "../styles/components/menu-items.css";
+import "../styles/components/profile-dropdown.css";
+
 import {
   IconLabel,
   IconMug,
@@ -10,17 +12,24 @@ import {
   IconUser,
 } from "@tabler/icons-react";
 import MenuItem from "./MenuItem";
+import ProfilePhoto from "./ProfilePhoto";
 import useIsDesktop from "../utils/useIsDesktop";
 
-const ProfileCard = ({ isMobile, closeFloat }) => {
-  const navigate = useNavigate();
+const useHeaderProfile = () => {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
     fetch("/profile.json")
       .then((res) => res.json())
-      .then((data) => setProfile(data));
+      .then((data) => setProfile(data))
+      .catch((err) => console.error("Error loading profile:", err));
   }, []);
+
+  return profile;
+};
+
+const ProfileCard = ({ isMobile, closeFloat, profile }) => {
+  const navigate = useNavigate();
 
   if (!profile) return null;
 
@@ -33,47 +42,41 @@ const ProfileCard = ({ isMobile, closeFloat }) => {
   };
 
   return (
-    <div className="profile-dropdown">
-      <div className="profile-card">
-        <div className="profile-info">
-          <h2 className="profile-name">
-            Hello,
-            <br />
-            {profile.name}
-          </h2>
-          <span onClick={handleProfileClick}>
-            <img
-              src={profile.photo}
-              className="header-profile-photo-card"
-              alt="Profile"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = "/generic-profile.png";
-              }}
-            />
-          </span>
-        </div>
-        <div className="profile-actions">
-          <ul className="menu-list-items">
-            {isMobile && (
-              <MenuItem icon={IconUser} to={`/profile/${profile.id}`}>
-                My Profile
-              </MenuItem>
-            )}
-            <MenuItem icon={IconMug} to="/closet">
-              My Tea Collection
+    <div className="profile-card">
+      <div className="profile-info">
+        <h2 className="profile-name">
+          Hello,
+          <br />
+          {profile.name}
+        </h2>
+        <span onClick={handleProfileClick}>
+          <ProfilePhoto
+            src={profile.photo}
+            className="header-profile-photo-card"
+            alt="Profile"
+          />
+        </span>
+      </div>
+      <div className="profile-actions">
+        <ul className="menu-list-items">
+          {isMobile && (
+            <MenuItem icon={IconUser} to={`/profile/${profile.id}`}>
+              My Profile
             </MenuItem>
-            <MenuItem icon={IconShoppingCart}>
-              Shop for Teas {"("}soon{")"}
-            </MenuItem>
-            <MenuItem icon={IconLabel}>
-              Saved Programs {"("}soon{")"}
-            </MenuItem>
-            <MenuItem icon={IconSettings}>
-              Settings {"("}soon{")"}
-            </MenuItem>
-          </ul>
-        </div>
+          )}
+          <MenuItem icon={IconMug} to="/closet">
+            My Tea Collection
+          </MenuItem>
+          <MenuItem icon={IconShoppingCart}>
+            Shop for Teas {"("}soon{")"}
+          </MenuItem>
+          <MenuItem icon={IconLabel}>
+            Saved Programs {"("}soon{")"}
+          </MenuItem>
+          <MenuItem icon={IconSettings}>
+            Settings {"("}soon{")"}
+          </MenuItem>
+        </ul>
       </div>
     </div>
   );
@@ -81,19 +84,34 @@ const ProfileCard = ({ isMobile, closeFloat }) => {
 
 const ProfileHover = () => {
   const [hovered, setHovered] = useState(false);
-  const [profile, setProfile] = useState(null);
+  const navigate = useNavigate();
   const isMobile = !useIsDesktop();
+  const profile = useHeaderProfile();
 
   useEffect(() => {
-    fetch("/profile.json")
-      .then((res) => res.json())
-      .then((data) => setProfile(data));
-  }, []);
+    if (isMobile && hovered) {
+      const handleClickOutside = (event) => {
+        const profileDropdown = document.querySelector(".profile-dropdown");
+        if (profileDropdown && !profileDropdown.contains(event.target)) {
+          setHovered(false);
+        }
+      };
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [isMobile, hovered]);
 
   if (!profile) return null;
 
   const handleClick = () => {
-    if (isMobile) setHovered((h) => !h);
+    if (isMobile) {
+      setHovered((h) => !h);
+    } else {
+      navigate(`/profile/${profile.id}`);
+    }
   };
 
   return (
@@ -103,19 +121,19 @@ const ProfileHover = () => {
       onMouseLeave={!isMobile ? () => setHovered(false) : undefined}
       style={{ display: "block", position: "relative" }}
     >
-      <img
+      <ProfilePhoto
         src={profile.photo}
         className="header-profile-photo"
         alt="Profile"
         style={{ cursor: "pointer" }}
         onClick={handleClick}
-        onError={(e) => {
-          e.target.onerror = null;
-          e.target.src = "/generic-profile.png";
-        }}
       />
       <div className={`profile-card-float${hovered ? " visible" : ""}`}>
-        <ProfileCard isMobile={isMobile} closeFloat={() => setHovered(false)} />
+        <ProfileCard
+          isMobile={isMobile}
+          closeFloat={() => setHovered(false)}
+          profile={profile}
+        />
       </div>
     </div>
   );

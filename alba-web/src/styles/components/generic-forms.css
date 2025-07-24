@@ -1,0 +1,171 @@
+/* Generic Form Styles */
+.generic-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #fffffd;
+  border-radius: var(--border-radius);
+}
+
+.generic-form__heading {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.generic-form__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.generic-form__field {
+  margin-bottom: 1rem;
+}
+
+.generic-form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.generic-form__input,
+.generic-form__select,
+.generic-form__textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--text-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #fffffd;
+  color: var(--text-color);
+  transition: border-color 0.2s ease;
+}
+
+.generic-form__checkbox {
+  margin-right: 0.5rem;
+}
+
+.generic-form__checkbox-label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.generic-form__checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .generic-form__checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+.generic-form__input:focus,
+.generic-form__select:focus,
+.generic-form__textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.1);
+}
+
+.generic-form__textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.generic-form__error {
+  display: block;
+  color: var(--error-color);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.generic-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.generic-form__cancel,
+.generic-form__submit {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.generic-form__cancel {
+  background: var(--secondary-bg);
+  color: var(--text-secondary);
+}
+
+.generic-form__cancel:hover {
+  background: var(--border-color);
+}
+
+.generic-form__submit {
+  background: var(--accent-color);
+  color: white;
+}
+
+.generic-form__submit:hover {
+  background: var(--accent-hover);
+}
+
+/* Mobile overlay for generic forms */
+.mobile-example-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-bg);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.mobile-example-form-overlay .generic-form {
+  max-height: 90vh;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .generic-form {
+    padding: 1rem;
+  }
+
+  .generic-form__actions {
+    flex-direction: column;
+  }
+
+  .generic-form__cancel,
+  .generic-form__submit {
+    width: 100%;
+  }
+}

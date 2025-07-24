@@ -1,0 +1,40 @@
+/* ==============================================
+   BUTTON COMPONENT STYLES
+   ============================================== */
+
+.floating-action-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: var(--primary-green);
+  color: var(--text-color);
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: none;
+}
+
+.floating-action-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.floating-action-button:active {
+  transform: scale(0.95);
+}
+
+/* Mobile Media Queries */
+@media (max-width: 900px) {
+  .floating-action-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

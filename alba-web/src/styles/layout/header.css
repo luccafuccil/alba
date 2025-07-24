@@ -1,0 +1,49 @@
+/* ==============================================
+   HEADER COMPONENT STYLES
+   ============================================== */
+
+.header-name {
+  font-family: var(--title-font);
+  color: var(--text-color);
+  font-size: 32px;
+}
+
+header {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  padding: 32px;
+  align-items: center;
+}
+
+.header-link {
+  text-decoration: none;
+}
+
+.header-profile-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-card-float {
+  position: absolute;
+  top: -22px;
+  right: -18px;
+  z-index: 1001;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.profile-card-float.visible {
+  opacity: 1;
+  pointer-events: auto;
+}

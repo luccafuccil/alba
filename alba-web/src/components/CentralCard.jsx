@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import "../styles/home.css";
+import "../styles/components/central-card.css";
 
 const CentralCard = () => {
   const navigate = useNavigate();

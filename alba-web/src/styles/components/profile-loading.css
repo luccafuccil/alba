@@ -1,0 +1,27 @@
+/* ==============================================
+   PROFILE LOADING STATES COMPONENT STYLES
+   ============================================== */
+
+.profile-loading {
+  height: 50%;
+  font-family: var(--title-font);
+  font-size: 24px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.profile-not-found {
+  height: 50%;
+  font-family: var(--title-font);
+  font-size: 24px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.profile-error {
+  height: 50%;
+  font-family: var(--title-font);
+  font-size: 24px;
+  color: var(--text-color);
+  text-align: center;
+}

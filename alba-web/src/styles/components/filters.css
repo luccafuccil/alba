@@ -1,0 +1,96 @@
+/* ==============================================
+   FILTER COMPONENT STYLES
+   ============================================== */
+
+.tea-type-filter {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tea-type-filter button {
+  background: #fff;
+  color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: 14px;
+  border: 1.5px solid var(--primary-green);
+  border-radius: 24px;
+  padding: 4px 8px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.tea-type-filter button:hover {
+  background: var(--primary-green);
+}
+
+.tea-type-filter button.active {
+  background: var(--primary-green);
+}
+
+.tea-type-filter-container {
+  position: relative;
+  width: auto;
+  margin-right: 40px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.scroll-indicator--left {
+  left: 60px;
+}
+
+.scroll-indicator--right {
+  right: 0px;
+}
+
+.scroll-indicator__arrow {
+  height: 16px;
+  width: 16px;
+  color: var(--text-color);
+}
+
+/* Mobile Media Queries */
+@media (max-width: 900px) {
+  .tea-type-filter {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100vw;
+    padding: 0 16px;
+    box-sizing: border-box;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    margin-left: 60px;
+  }
+
+  .tea-type-filter button {
+    background: #fff;
+    color: var(--text-color);
+    font-family: var(--body-font);
+    font-size: 14px;
+    border: none;
+    border-radius: 24px;
+    padding: 4px 12px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    margin-right: 4px;
+    word-break: keep-all;
+  }
+
+  .tea-type-filter button:hover {
+    background: var(--primary-green);
+  }
+}
