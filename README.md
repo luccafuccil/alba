@@ -44,7 +44,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/alba-web.git
+git clone https://github.com/luccafuccil/alba.git
 
 # Navigate to project directory
 cd alba-web
