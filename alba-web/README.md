@@ -1,4 +1,4 @@
-#ENGLISH VERSION (PORTUGUÊS MAIS ABAIXO)
+# ENGLISH VERSION (PORTUGUÊS MAIS ABAIXO)
 
 # Alba - The Tea Closet App
 
@@ -27,6 +27,8 @@ A React web application for cataloguing your tea collection with focus on colorf
 - **Weather:** [Open-Meteo](https://open-meteo.com/) (no API key required)
 - **Geolocation:** [Nominatim OpenStreetMap](https://nominatim.org/) (no API key required)
 
+### Due to privacy reasons and lack of a HTTPS certificate, the geolocation only works on desktop.
+
 ## Project Structure
 
 alba-web/
@@ -39,7 +41,7 @@ alba-web/
     profile.json
 
 
-#VERSÃO PORTUGUÊS
+# VERSÃO PORTUGUÊS
 
 # Alba - Seu App de Chás
 
@@ -67,6 +69,8 @@ Uma aplicação web em React para catalogar sua coleção de chás, com foco em 
 
 - **Dados de clima:** [Open-Meteo](https://open-meteo.com/) (no API key required)
 - **Geolocalização:** [Nominatim OpenStreetMap](https://nominatim.org/) (no API key required)
+
+### Por questões de privacidade e a falta de um certificado HTTPS, a geolocalização só funciona em desktop.
 
 ## Estrutura do projeto
 
